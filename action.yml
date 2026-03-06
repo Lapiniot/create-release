@@ -3,10 +3,10 @@ description: Create release GitHub action
 author: Lapiniot
 
 inputs:
-  name:
+  release-name:
     description: The name of the release
     required: true
-  tag_name:
+  tag-name:
     description: The name of the tag
     required: true
   body:
@@ -15,24 +15,28 @@ inputs:
   prerelease:
     description: true to identify the release as a prerelease. false to identify the release as a full release
     required: false
+    default: false
   draft:
     description: true to create a draft (unpublished) release, false to create a published one
     required: false
-  generate_release_notes:
+    default: false
+  generate-release-notes:
     description: Whether to automatically generate the name and body for this release.
     required: false
-  make_latest:
+    default: false
+  make-latest:
     description: Specifies whether this release should be set as the latest release for the repository
     required: false
+    default: false
 
 outputs:
   id:
     description: The unique identifier of the release
-  html_url:
+  html-url:
     description: User accessible URL for the release created
-  upload_url:
+  upload-url:
     description: Assets upload target URL
 
 runs: 
-  using: node20
+  using: node24
   main: dist/index.js
